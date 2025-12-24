@@ -131,6 +131,7 @@ body {
 /* About Section */
 .about-content {
   background: rgba(26, 26, 46, 0.6);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 3rem;
@@ -155,6 +156,7 @@ body {
 
 .skill-card {
   background: rgba(26, 26, 46, 0.6);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   padding: 2rem;
   border-radius: 15px;
@@ -189,6 +191,7 @@ body {
 
 .project-card {
   background: rgba(26, 26, 46, 0.6);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   overflow: hidden;
@@ -243,6 +246,7 @@ body {
 .contact-content {
   text-align: center;
   background: rgba(26, 26, 46, 0.6);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 3rem;

@@ -1,8 +1,6 @@
-# personal-profile-webiste
-Personal Profile Website - System Fix Complete ✅
-Overview
-Successfully fixed the personal profile website system by creating the missing /src directory structure and building a complete, modern React-based portfolio website.
+# Personal Profile Website
 
+<<<<<<< HEAD
 What Was Fixed
 ❌ Issues Found:
 Missing /src directory (referenced in index.html but didn't exist)
@@ -89,95 +87,74 @@ Fast hot module replacement (HMR)
 
 <img width="476" height="244" alt="image" src="https://github.com/user-attachments/assets/6df16a22-7edf-45ee-8e7c-5c0feb321848" />
 
+=======
+A modern, responsive personal portfolio website built with React and Vite, featuring a premium dark theme with glassmorphism effects.
+>>>>>>> 7645149 (Initial commit)
 
-✅ Functionality Testing
-All sections render correctly
-Hover effects work on cards and buttons
-Smooth scroll behavior
-Responsive design verified (mobile width tested)
-All links functional
-How to Use
-Running the Development Server
-# PowerShell execution policy bypass (if needed)
+## 🚀 Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
 powershell -ExecutionPolicy Bypass -Command "npm run dev"
-The site will be available at: http://localhost:5173
 
-Customizing Your Profile
-1. Update Personal Information
-Edit 
-Hero.jsx
-:
-
-Change name/title in hero section
-Update description
-2. Modify About Section
-Edit 
-About.jsx
-:
-
-Replace bio paragraphs with your own story
-3. Update Skills
-Edit 
-Skills.jsx
-:
-
-Modify the skillCategories array with your skills
-4. Add Your Projects
-Edit 
-Projects.jsx
-:
-
-Update the projects array with your actual projects
-Add real project links
-5. Update Contact Links
-Edit 
-Contact.jsx
-:
-
-Replace placeholder email with your email
-Update GitHub and LinkedIn URLs
-6. Customize Colors
-Edit 
-index.css
-:
-
-Modify CSS variables in :root section for different color schemes
-Building for Production
-When ready to deploy:
-
+# Build for production
 npm run build
-This creates an optimized production build in the dist/ folder.
+```
 
-Technical Stack
-React 18.3.1 - UI framework
-Vite 6.0.5 - Build tool & dev server
-CSS3 - Modern styling with custom properties
-JavaScript ES6+ - Modern JavaScript features
-Next Steps
-TIP
+Visit <http://localhost:5173> to view the site.
 
-Personalization Checklist
+## ✨ Features
 
- Replace all placeholder text with your actual information
- Add your real email, GitHub, and LinkedIn URLs
- Update projects with your actual work
- Consider adding profile images or project screenshots
- Customize color scheme to match your brand
-NOTE
+- **Modern Design**: Dark theme with purple/blue gradients and glassmorphism effects
+- **Fully Responsive**: Mobile-first design that adapts to all screen sizes
+- **Smooth Animations**: Elegant fade-in animations and hover effects
+- **Fast**: Built with Vite for lightning-fast development and optimized builds
+- **Clean Code**: Well-organized React components and modern CSS
 
-Optional Enhancements
+## 📁 Project Structure
 
-Add a navigation bar for quick section jumps
-Include a resume download button
-Add more projects or a blog section
-Integrate Google Analytics for visitor tracking
-Add animations using libraries like Framer Motion
-Status: ✅ System Fixed & Verified
-The personal profile website is now fully functional with:
+```text
+src/
+├── components/
+│   ├── Hero.jsx      # Hero section with CTA
+│   ├── About.jsx     # About section
+│   ├── Skills.jsx    # Skills showcase
+│   ├── Projects.jsx  # Project portfolio
+│   ├── Contact.jsx   # Contact links
+│   └── Footer.jsx    # Footer
+├── App.jsx           # Main app component
+├── main.jsx          # React entry point
+└── index.css         # Global styles
+```
 
+<<<<<<< HEAD
 ✅ Complete React component structure
 ✅ Modern, premium design
 ✅ Responsive layout
 ✅ Working development server
 ✅ All sections rendering correctly
 The website is ready for customization and deployment! 🚀
+=======
+## 🎨 Customization
+
+1. **Personal Info**: Edit `src/components/Hero.jsx` to update your name and title
+2. **About**: Modify `src/components/About.jsx` with your bio
+3. **Skills**: Update the skills array in `src/components/Skills.jsx`
+4. **Projects**: Add your projects in `src/components/Projects.jsx`
+5. **Contact**: Update links in `src/components/Contact.jsx`
+6. **Colors**: Customize CSS variables in `src/index.css`
+
+## 🛠️ Tech Stack
+
+- React 18.3.1
+- Vite 6.0.5
+- CSS3 with custom properties
+- Modern JavaScript (ES6+)
+
+## 📝 License
+
+MIT - Feel free to use this template for your own portfolio!
+>>>>>>> 7645149 (Initial commit)
