@@ -16,6 +16,8 @@ Updated HTML title to "Personal Profile"
 Implemented premium dark theme with glassmorphism effects
 Added responsive design and smooth animations
 Project Structure
+
+---
 My-website/
 ├── src/
 │   ├── components/
@@ -32,17 +34,20 @@ My-website/
 ├── package.json
 └── vite.config.js
 Features Implemented
+---
 🎨 Modern Design System
 Dark Theme: Deep blue/purple gradient color scheme
 Glassmorphism: Frosted glass effect on cards with backdrop blur
 Gradient Accents: Beautiful gradient text and buttons
 Smooth Animations: Fade-in-up animations on hero section
 Hover Effects: Interactive cards and buttons with transform and glow effects
+
 📱 Responsive Layout
 Mobile-first design approach
 Flexible grid layouts that adapt to screen size
 Touch-friendly interactive elements
 Optimized typography scaling with clamp()
+
 🧩 Components
 Hero Section
 Large animated headline with gradient text
