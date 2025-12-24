@@ -80,9 +80,15 @@ Successfully running at http://localhost:5173
 No console errors
 Fast hot module replacement (HMR)
 ✅ Visual Testing
-Hero section with gradient text, subtitle, and call-to-action button on dark background
-Review
-Hero section with gradient text, subtitle, and call-to-action button on dark background
+
+<img width="478" height="244" alt="image" src="https://github.com/user-attachments/assets/dcdcbb3b-c9c3-4bcf-bdad-938e8b0c1fbb" />
+
+
+<img width="477" height="247" alt="image" src="https://github.com/user-attachments/assets/e937ed85-62aa-46a4-a320-66ed3ad5c248" />
+
+
+<img width="476" height="244" alt="image" src="https://github.com/user-attachments/assets/6df16a22-7edf-45ee-8e7c-5c0feb321848" />
+
 
 ✅ Functionality Testing
 All sections render correctly
