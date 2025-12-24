@@ -1,0 +1,104 @@
+.component-palette {
+  padding: var(--spacing-md);
+}
+
+.component-palette h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.tool-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--tool-color);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.tool-button:hover {
+  background: var(--bg-hover);
+  border-color: var(--tool-color);
+  transform: translateX(2px);
+}
+
+.tool-button.active {
+  background: var(--bg-hover);
+  border-color: var(--tool-color);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.tool-button.active::before {
+  opacity: 1;
+}
+
+.tool-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--tool-color);
+  font-weight: bold;
+}
+
+.tool-name {
+  flex: 1;
+}
+
+.palette-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.action-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.action-button:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.action-button.danger:hover {
+  border-color: var(--accent-danger);
+  color: var(--accent-danger);
+}
