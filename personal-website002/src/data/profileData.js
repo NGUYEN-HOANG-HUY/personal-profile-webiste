@@ -16,9 +16,9 @@ export const profileData = {
     }
   ],
   contact: {
-    email: "contact@example.com",
+    email: "nguyenhuyhoang2k4smart@gmail.com",
     linkedin: "linkedin.com/in/nguyenhoanghuy",
-    github: "github.com/nguyenhoanghuy"
+    github: "https://github.com/NGUYEN-HOANG-HUY"
   },
   faq: [
     {

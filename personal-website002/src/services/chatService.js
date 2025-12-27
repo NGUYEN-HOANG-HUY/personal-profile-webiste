@@ -1,46 +1,72 @@
 import { profileData } from '../data/profileData';
 
-// Simple keyword matching for "AI" behavior
-// Support varying questions in English and Vietnamese
-export const getBotResponse = (input) => {
-  const lowerInput = input.toLowerCase();
+const SYSTEM_PROMPT = `
+Bạn là một trợ lý chatbot AI trên website cá nhân của ${profileData.name} (${profileData.occupation}).
+Nhiệm vụ của bạn là:
+1. Trả lời nhanh, rõ ràng, súc tích.
+2. Nếu câu hỏi phức tạp, hãy phân tích vấn đề theo từng bước.
+3. Luôn tập trung vào việc giải quyết vấn đề thực tế, không lan man.
+4. Nếu thông tin chưa đủ, hãy đặt câu hỏi ngắn gọn để làm rõ.
+5. Đưa ra giải pháp cụ thể, có thể hành động ngay.
+6. Phong cách: Thân thiện, dễ hiểu, định hướng hành động.
 
-  // Greetings
-  if (lowerInput.match(/(hello|hi|hey|xin chào|chào)/)) {
-    return "Hello! I am Huy's AI Assistant. How can I help you today? (Xin chào! Tôi là trợ lý AI của Huy. Tôi có thể giúp gì cho bạn?)";
+Thông tin về ${profileData.name}:
+- Kỹ năng: ${profileData.hobbies.join(', ')}
+- Dự án: ${profileData.projects.map(p => p.title).join(", ")}
+- Liên hệ: ${profileData.contact.email}
+
+Hãy trả lời ngắn gọn, súc tích nhưng đầy đủ ý.
+`;
+
+export const getBotResponse = async function* (input, history = []) {
+  try {
+    const formattedHistory = history.map(msg => ({
+      role: msg.sender === 'bot' ? 'assistant' : 'user',
+      content: msg.text
+    }));
+
+    const response = await fetch('/api/ollama/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'mistral',
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          ...formattedHistory,
+          { role: 'user', content: input }
+        ],
+        stream: true, // Enable streaming
+      }),
+    });
+
+    if (!response.ok) throw new Error('AI Connection Failed');
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      const chunk = decoder.decode(value, { stream: true });
+      // Ollama returns multiple JSON objects in one chunk sometimes
+      const lines = chunk.split('\n').filter(line => line.trim() !== '');
+
+      for (const line of lines) {
+        try {
+          const json = JSON.parse(line);
+          if (json.message && json.message.content) {
+            yield json.message.content;
+          }
+          if (json.done) return;
+        } catch (e) {
+          console.error("Error parsing JSON chunk", e);
+        }
+      }
+    }
+
+  } catch (error) {
+    console.error("AI Error:", error);
+    yield "Xin lỗi, kết nối với AI (Ollama) bị gián đoạn. Hãy kiểm tra terminal 'ollama serve'.";
   }
-
-  // Identity
-  if (lowerInput.match(/(who are you|bạn là ai|what can you do)/)) {
-    return "I am an AI assistant integrated into this website to answer questions about Nguyen Hoang Huy. You can ask about his projects, skills, or how to contact him.";
-  }
-
-  // Name/Owner
-  if (lowerInput.match(/(who is huy|vn|about huy|tên gì|name)/)) {
-    return `This website belongs to ${profileData.name}, a ${profileData.occupation}.`;
-  }
-
-  // Skills/Tech
-  if (lowerInput.match(/(skill|tech|stack|giỏi|công nghệ|biết làm gì)/)) {
-    return `Huy is skilled in: ${profileData.hobbies.join(', ')} (and more!). He mainly works with React, Node.js, and modern web tech.`;
-  }
-
-  // Projects
-  if (lowerInput.match(/(project|work|portfolio|dự án|làm được gì)/)) {
-    const projectTitles = profileData.projects.map(p => p.title).join(", ");
-    return `Huy has worked on projects like: ${projectTitles}. Check out the Portfolio section for more details!`;
-  }
-
-  // Contact
-  if (lowerInput.match(/(contact|email|phone|liên hệ|gọi|mess)/)) {
-    return `You can contact Huy via email at ${profileData.contact.email} or connect on LinkedIn/GitHub.`;
-  }
-
-  // Hobbies
-  if (lowerInput.match(/(hobby|hobbies|like|love|sở thích|thích gì)/)) {
-    return `Huy enjoys: ${profileData.hobbies.join(', ')}.`;
-  }
-
-  // Default
-  return "I'm not sure I understand. Try asking about 'projects', 'skills', or 'contact'. (Tôi chưa hiểu rõ. Hãy thử hỏi về 'dự án', 'kỹ năng', hoặc 'liên hệ' nhé.)";
 };
